@@ -5,24 +5,25 @@ def mcd(a, b):
         a, b = b, a % b
     return a
 
-# Solicitar al usuario que ingrese el primer número
+
+# Solicitar al usuario que ingrese ambos números
 while True:
     try:
         num1 = int(input("Ingrese el primer número: "))
-        break  # Salir del bucle si la conversión a entero es exitosa
-    except ValueError:
-        print("Por favor, ingrese un número entero válido.")
+        if num1 < 0:
+            raise ValueError("Por favor, ingrese un número positivo.")
 
-# Solicitar al usuario que ingrese el segundo número
-while True:
-    try:
         num2 = int(input("Ingrese el segundo número: "))
-        break  # Salir del bucle si la conversión a entero es exitosa
-    except ValueError:
-        print("Por favor, ingrese un número entero válido.")
+        if num2 < 0:
+            raise ValueError("Por favor, ingrese un número positivo.")
+
+        break  # Salir del bucle si ambos números son positivos
+    except ValueError as e:
+        print(e)
 
 # Calcular y mostrar el máximo común divisor
 print("El máximo común divisor de", num1, "y", num2, "es:", mcd(num1, num2))
+
 
 
 
